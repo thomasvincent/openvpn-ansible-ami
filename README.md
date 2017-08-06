@@ -19,17 +19,24 @@ This Packer AMI Builder creates a new AMI out of the latest Amazon Linux AMI, an
 ```
 
 
-## Cloudformation template
+## Terraform template
 
 Terraform will create the following resources as part of the AMI Builder for Packer:
 
-    * ``terraform/pipeline.tf``
+    + Terraform Templates
     + Github - Git repository
     + AWS CodeBuild - Downloads Packer and run Packer to build AMI
     + AWS CodePipeline - Orchestrates pipeline and listen for new commits in CodeCommit
     + Amazon SNS Topic - AMI Builds Notification via subscribed SNS
     + Amazon Cloudwatch Events Rule - Custom Event for AMI Builder that will trigger SNS upon AMI completion
 
+## Ansible Roles
+
+Ansible will apply the following roles:
+
+    + dharrisio.aws-cloudwatch-logs-agent
+    + anthcourtney.cis-amazon-linux
+    + thomasvincent.openvpn (Fork of Stouts.openvpn, and will open PR with RedHat/AWS Linux Support)
 
 ## HOWTO
 
