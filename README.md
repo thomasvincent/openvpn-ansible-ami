@@ -1,3 +1,6 @@
+## OpenVPN Ansible AMI Builder
+This is a fork of [awslabs/ami-builder-packer](https://github.com/awslabs/ami-builder-packer) that uses Terraform instead of cloudfront. As well as using a AMI role to configure OpenVPN.
+
 ## Purpose
 
 This Packer AMI Builder creates a new AMI out of the latest Amazon Linux AMI, and applies AWS CIS Foundation via Ansible. Then installs OpenVPN via Ansible. The code also includes terraform to orchestrate all the components. AWS CodePipeline is leveraged to orchestrate the entire process.
