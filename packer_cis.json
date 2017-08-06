@@ -6,7 +6,7 @@
     "ami_name": "OpenVPN-CIS-Latest-AMZN-{{isotime \"02-Jan-06 03_04_05\"}}"
   },
   "builders": [{
-    "name": "OpenVPN Amazon Linux AMI Builder - CIS",
+    "name": "OpenVPN with Amazon Linux AMI Builder - CIS",
     "type": "amazon-ebs",
     "region": "{{user `aws_region`}}",
     "source_ami_filter": {
@@ -16,7 +16,7 @@
             "root-device-type": "ebs"
         },
         "owners": ["137112412989", "591542846629", "801119661308",
-                   "102837901569", "013907871322", "206029621532", 
+                   "102837901569", "013907871322", "206029621532",
                    "286198878708", "443319210888"],
         "most_recent": true
     },
@@ -26,7 +26,7 @@
     "tags": {
       "Name": "{{user `ami_name`}}"
     },
-    "run_tags": { 
+    "run_tags": {
       "Name": "{{user `ami_name`}}"
     },
     "run_volume_tags": {
@@ -35,7 +35,7 @@
     "snapshot_tags": {
       "Name": "{{user `ami_name`}}"
     },
-    "ami_description": "OpenVPN with Amazon Linux CIS with Cloudwatch Logs agent",
+    "ami_description": "OpenVPN with Amazon Linux CIS and Cloudwatch Logs agent",
     "associate_public_ip_address": "true",
     "vpc_id": "{{user `vpc`}}",
     "subnet_id": "{{user `subnet`}}"
@@ -46,7 +46,7 @@
         "inline": [
             "sudo pip install ansible"
         ]
-    }, 
+    },
     {
         "type": "ansible-local",
         "playbook_file": "ansible/playbook.yaml",
