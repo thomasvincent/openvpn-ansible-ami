@@ -1,6 +1,6 @@
 ## Purpose
 
-This Packer AMI Builder creates a new AMI out of the latest Amazon Linux AMI, and installs OpenVPN. The code also includes terraform to orchestrate all the components. AWS CodePipeline is leveraged to orchestrate the entire process.
+This Packer AMI Builder creates a new AMI out of the latest Amazon Linux AMI, and applies AWS CIS Foundation via Ansible. Then installs OpenVPN via Ansible. The code also includes terraform to orchestrate all the components. AWS CodePipeline is leveraged to orchestrate the entire process.
 
 ![Packer AMI Builder Diagram](images/ami-builder-diagram.png)
 
