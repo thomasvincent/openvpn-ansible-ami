@@ -1,11 +1,8 @@
-## OpenVPN Ansible AMI Builder
-This is a fork of [awslabs/ami-builder-packer](https://github.com/awslabs/ami-builder-packer) that uses Terraform instead of cloudfront. As well as using a AMI role to configure OpenVPN.
-
 ## Purpose
 
-This Packer AMI Builder creates a new AMI out of the latest Amazon Linux AMI, and applies AWS CIS Foundation via Ansible. Then installs OpenVPN via Ansible. The code also includes terraform to orchestrate all the components. AWS CodePipeline is leveraged to orchestrate the entire process.
+This Packer AMI Builder creates a new AMI out of the latest Amazon Linux AMI, and installs OpenVPN. The code also includes terraform to orchestrate all the components. AWS CodePipeline is leveraged to orchestrate the entire process.
 
-![Packer AMI Builder Diagram](images/ami-builder-diagram.png)
+![Packer AMI Builder Diagram](docs/images/ami-builder-diagram.png)
 
 ## Source code structure
 
@@ -22,24 +19,17 @@ This Packer AMI Builder creates a new AMI out of the latest Amazon Linux AMI, an
 ```
 
 
-## Terraform template
+## Cloudformation template
 
 Terraform will create the following resources as part of the AMI Builder for Packer:
 
-    + Terraform Templates
+    * ``terraform/pipeline.tf``
     + Github - Git repository
     + AWS CodeBuild - Downloads Packer and run Packer to build AMI
     + AWS CodePipeline - Orchestrates pipeline and listen for new commits in CodeCommit
     + Amazon SNS Topic - AMI Builds Notification via subscribed SNS
     + Amazon Cloudwatch Events Rule - Custom Event for AMI Builder that will trigger SNS upon AMI completion
 
-## Ansible Roles
-
-Ansible will apply the following roles:
-
-    + dharrisio.aws-cloudwatch-logs-agent
-    + anthcourtney.cis-amazon-linux
-    + thomasvincent.openvpn (Fork of Stouts.openvpn, and will open PR with RedHat/AWS Linux Support)
 
 ## HOWTO
 
@@ -51,7 +41,7 @@ Ansible will apply the following roles:
 
 **Launch the Terraform**
 
-![AWS CodePipeline Console - AMI Builder Pipeline](images/ami-builder-pipeline.png)
+![AWS CodePipeline Console - AMI Builder Pipeline](docs/images/ami-builder-pipeline.png)
 
 ## Known issues
 
@@ -66,4 +56,3 @@ Ansible will apply the following roles:
 ## Inspired by:
 * [nicolai86/awesome-codepipeline-ci](https://github.com/nicolai86/awesome-codepipeline-ci)
 * [awslabs/ami-builder-packer](https://github.com/awslabs/ami-builder-packer)
-
