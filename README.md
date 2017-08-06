@@ -54,6 +54,6 @@ Terraform will create the following resources as part of the AMI Builder for Pac
 * Email, email-json, and sms endpoints are unsupported because the endpoint needs to be authorized and does not generate an ARN until the target email address has been validated. This breaks the Terraform model and as a result are not currently supported.
 
 ## Inspired by:
-@nicolai86/awesome-codepipeline-ci
-@awslabs/ami-builder-packer
+[nicolai86/awesome-codepipeline-ci](https://github.com/nicolai86/awesome-codepipeline-ci)
+[awslabs/ami-builder-packer](https://github.com/awslabs/ami-builder-packer)
 
