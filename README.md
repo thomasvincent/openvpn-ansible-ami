@@ -21,13 +21,13 @@ This Packer AMI Builder creates a new AMI out of the latest Amazon Linux AMI, an
 
 ## Cloudformation template
 
-Cloudformation will create the following resources as part of the AMI Builder for Packer:
+Terraform will create the following resources as part of the AMI Builder for Packer:
 
     * ``terraform/pipeline.tf``
-    + AWS CodeCommit - Git repository
+    + Github - Git repository
     + AWS CodeBuild - Downloads Packer and run Packer to build AMI
     + AWS CodePipeline - Orchestrates pipeline and listen for new commits in CodeCommit
-    + Amazon SNS Topic - AMI Builds Notification via subscribed email
+    + Amazon SNS Topic - AMI Builds Notification via subscribed SNS
     + Amazon Cloudwatch Events Rule - Custom Event for AMI Builder that will trigger SNS upon AMI completion
 
 
@@ -52,3 +52,8 @@ Cloudformation will create the following resources as part of the AMI Builder fo
     - A) You haven't chosen a VPC Public Subnet, and therefore Packer cannot connect to the instance
     - B) There may have been a connectivity issue between Packer and EC2; retrying the build step within AWS CodePipeline should work just fine
 * Email, email-json, and sms endpoints are unsupported because the endpoint needs to be authorized and does not generate an ARN until the target email address has been validated. This breaks the Terraform model and as a result are not currently supported.
+
+## Inspired by:
+@nicolai86/awesome-codepipeline-ci
+@awslabs/ami-builder-packer
+
